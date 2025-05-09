@@ -90,6 +90,23 @@ services:
     networks:
       - ecommerce-net
 
+  ## SEARCH SUGGESTION SERVICE
+  search-suggestion-service:
+    build:
+      context: ./server/search-suggestion-service
+      dockerfile: Dockerfile
+    container_name: search-suggestion-service
+    ports:
+      - "${SEARCH_SUGGESTION_SERVICE_PORT}:10000"
+    environment:
+      PORT: ${SEARCH_SUGGESTION_SERVICE_PORT}
+      COMMON_DATA_SERVICE_URL: http://common-data-service:9000
+    depends_on:
+      - common-data-service
+    networks:
+      - ecommerce-net
+
+
   ## FRONTEND
   client:
     build:

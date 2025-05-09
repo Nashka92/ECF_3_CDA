@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: search-suggestion-service
+
+server:
+  port: ${PORT:10000}
+
+common:
+  data:
+    service:
+      url: ${COMMON_DATA_SERVICE_URL:http://localhost:9000}
